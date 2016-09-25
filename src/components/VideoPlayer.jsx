@@ -2,25 +2,26 @@ var VideoPlayer = (props) => {
   // console.log("PROPS COMMENTS IN VIDEOPLAYER", props)
 
   return (
-  <div className="video-player">
-    <div className="embed-responsive embed-responsive-16by9">
-      <iframe className="embed-responsive-item" src={`https://www.youtube.com/embed/${props.video.id.videoId}`} allowFullScreen></iframe>
+    <div className="video-player">
+      <div className="embed-responsive embed-responsive-16by9">
+        <iframe className="embed-responsive-item" src={`https://www.youtube.com/embed/${props.video.id.videoId}`} allowFullScreen></iframe>
+      </div>
+      <div className="video-player-details">
+        <h3>{props.video.snippet.title}</h3>
+        <div>{props.video.snippet.description}</div>
+      </div>
+      <div className="video-player-details">
+        <h3>Comments</h3>
+        {
+          props.comments && props.comments.map((comment, index) =>
+              <CommentEntry comment={comment} key={index} />
+            )
+        }
+      </div>
     </div>
-    <div className="video-player-details">
-      <h3>{props.video.snippet.title}</h3>
-      <div>{props.video.snippet.description}</div>
-    </div>
-    <div className="video-player-details">
-      <h3>Comments</h3>
-      {
-        props.comments && props.comments.map((comment,index)=>
-            <CommentEntry comment={comment} key={index} />
-          )
-      }
-    </div>
-  </div>
+  );
 
-)};
+};
 
 // PropTypes tell other developers what `props` a component expects
 // Warnings will be shown in the console when the defined rules are violated

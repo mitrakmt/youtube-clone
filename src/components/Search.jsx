@@ -1,17 +1,18 @@
 class Search extends React.Component {
   constructor (props) {
-    super(props)
+    super(props);
     this.state = {
       searchText: this.props.searchText
-    }
-    this.handleChange= this.handleChange.bind(this);
+    };
+
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange (event) {
     this.setState({searchText: event.target.value});
     setTimeout( () => {
       this.props.searchVideos(this.state.searchText);
-    }, 200)
+    }, 200);
   }
 
   render() {
@@ -22,8 +23,9 @@ class Search extends React.Component {
           <span className="glyphicon glyphicon-search"></span>
         </button>
       </div>
-    )
+    );
   }
+
 }
 
 // In the ES6 spec, files are "modules" and do not share a top-level scope

@@ -4,13 +4,13 @@ var CommentEntry = (props) => {
   var authorName = props.comment.snippet.topLevelComment.snippet.authorDisplayName;
 
   return (
-  <div className="comment-list-entry">
-    <div className="comment-body">
-      <div className="comment-list-entry-author" >{authorName}: </div>
-      <div className="comment-list-entry-text"> {commentText}</div>
+    <div className="comment-list-entry">
+      <div className="comment-body">
+        <div className="comment-list-entry-author" >{authorName}: </div>
+        <div className="comment-list-entry-text"> {commentText}</div>
+      </div>
     </div>
-  </div>
-  )
+  );
 };
 
 // In the ES6 spec, files are "modules" and do not share a top-level scope

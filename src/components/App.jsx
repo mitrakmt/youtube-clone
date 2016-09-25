@@ -2,12 +2,12 @@
 
 class App extends React.Component {
   constructor (props) {
-    super(props)
+    super(props);
     this.state = {
-       current: props.youtube[0],
-       list: props.youtube,
-       searched: ''
-    }
+      current: props.youtube[0],
+      list: props.youtube,
+      searched: ''
+    };
     // this.changeVideo = this.changeVideo.bind(this);
   }
   changeVideo (newVideo) {
@@ -20,12 +20,12 @@ class App extends React.Component {
       part: 'snippet,replies',
       key: window.YOUTUBE_API_KEY,
       videoId: newVideo.id.videoId
-    }
+    };
 
     getComments(threadOptions, (comments) => {
       this.setState({
         comments: comments
-      })
+      });
     });
 
     setTimeout( () => {
@@ -44,25 +44,25 @@ class App extends React.Component {
       maxResults: 8,
       key: window.YOUTUBE_API_KEY,
       part: 'snippet'
-    }
+    };
 
     searchYouTube(videoOptions, (videos) => {
       this.setState({
         list: videos,
         current: videos[0]
-      })
+      });
     });
 
     let threadOptions = {
       part: 'snippet,replies',
       key: window.YOUTUBE_API_KEY,
       videoId: this.state.current.id.videoId
-    }
+    };
 
     getComments(threadOptions, (comments) => {
       this.setState({
         comments: comments
-      })
+      });
     });
   }
 
@@ -77,7 +77,7 @@ class App extends React.Component {
           <VideoList videos={this.state.list} changeVideo={this.changeVideo.bind(this)}/>
         </div>
       </div>
-    )
+    );
   }
 }
 
