@@ -1,13 +1,12 @@
 var getComments = (options, callback) => {
-  // TODO
 
    $.ajax({
     url: "https://www.googleapis.com/youtube/v3/commentThreads",
     type: "GET",
-    dataType: "json",
+    dataType: "jsonp",
     data: options,
     success: function (data) {
-      console.log("Comment data", data)
+      callback(data.items)
     },
     error: function (data) {
       console.error(data)

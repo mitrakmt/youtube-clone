@@ -11,7 +11,7 @@ class Search extends React.Component {
     this.setState({searchText: event.target.value});
     setTimeout( () => {
       this.props.searchVideos(this.state.searchText);
-    }, 100)
+    }, 200)
   }
 
   render() {

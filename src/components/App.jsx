@@ -12,26 +12,36 @@ class App extends React.Component {
   }
   changeVideo (newVideo) {
     this.setState({
-      current: newVideo
+      current: newVideo,
+      comments: undefined
     });
 
     let threadOptions = {
-      part: 'snippet'
+      part: 'snippet,replies',
+      key: window.YOUTUBE_API_KEY,
+      videoId: newVideo.id.videoId
     }
 
-    getComments(threadOptions, (comment)=>{
-      console.log(comment, 'INSIDE CHANGE video')
-    })
+    getComments(threadOptions, (comments) => {
+      this.setState({
+        comments: comments
+      })
+    });
+
+    setTimeout( () => {
+
+    }, 100);
   }
 
   searchVideos (searchText) {
     this.setState({
-      searched: searchText
+      searched: searchText,
+      comments: undefined
     });
 
     let videoOptions = {
       q: searchText,
-      maxResults: 10,
+      maxResults: 8,
       key: window.YOUTUBE_API_KEY,
       part: 'snippet'
     }
@@ -42,16 +52,26 @@ class App extends React.Component {
         current: videos[0]
       })
     });
+
+    let threadOptions = {
+      part: 'snippet,replies',
+      key: window.YOUTUBE_API_KEY,
+      videoId: this.state.current.id.videoId
+    }
+
+    getComments(threadOptions, (comments) => {
+      this.setState({
+        comments: comments
+      })
+    });
   }
-
-
 
   render() {
     return (
       <div>
         <Nav searchVideos={this.searchVideos.bind(this)} />
         <div className="col-md-7">
-          <VideoPlayer video={this.state.current}/>
+          <VideoPlayer video={this.state.current} comments={this.state.comments}/>
         </div>
         <div className="col-md-5">
           <VideoList videos={this.state.list} changeVideo={this.changeVideo.bind(this)}/>

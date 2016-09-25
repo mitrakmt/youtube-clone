@@ -1,5 +1,6 @@
 var VideoPlayer = (props) => {
-  // console.log(props)
+  // console.log("PROPS COMMENTS IN VIDEOPLAYER", props)
+
   return (
   <div className="video-player">
     <div className="embed-responsive embed-responsive-16by9">
@@ -11,11 +12,15 @@ var VideoPlayer = (props) => {
     </div>
     <div className="video-player-details">
       <h3>Comments</h3>
-      <div>{'ADD TO ME'}</div>
+      {
+        props.comments && props.comments.map((comment,index)=>
+            <CommentEntry comment={comment} key={index} />
+          )
+      }
     </div>
   </div>
 
-)}
+)};
 
 // PropTypes tell other developers what `props` a component expects
 // Warnings will be shown in the console when the defined rules are violated
