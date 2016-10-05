@@ -1,6 +1,7 @@
 
 
 class App extends React.Component {
+
   constructor (props) {
     super(props);
     this.state = {
@@ -8,7 +9,7 @@ class App extends React.Component {
       list: props.youtube,
       searched: ''
     };
-    // this.changeVideo = this.changeVideo.bind(this);
+
   }
   changeVideo (newVideo) {
     this.setState({

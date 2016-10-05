@@ -1,12 +1,32 @@
-var Nav = (props) => {
-  return (
-  <nav className="navbar">
-    <div className="col-md-6 col-md-offset-3">
-      <Search searchVideos={props.searchVideos}/>
-    </div>
-  </nav>
-)};
+class Nav extends React.Componenet {
 
-// In the ES6 spec, files are "modules" and do not share a top-level scope
-// `var` declarations will only exist globally where explicitly defined
+  constructor (props) {
+    super(props);
+    this.state = {
+      leftNav: false
+    };
+  };
+
+  showLeft({
+    this.refs.left.show();
+  });
+
+  render() {
+    return (
+      <nav className="navbar">
+        <i className="fa fa-bars menu-icon fa-2x" onClick={this.showLeft} aria-hidden="true"></i>
+        <div className="col-md-6 col-md-offset-3">
+          <Search searchVideos={props.searchVideos} />
+        </div>
+
+        <Menu ref="left" alignment="left">
+          <MenuItem>First Page</MenuItem>
+          <MenuItem>Second Page</MenuItem>
+          <MenuItem>Third Page</MenuItem>
+        </Menu>
+      </nav>
+    )
+  }
+}
+
 window.Nav = Nav;
